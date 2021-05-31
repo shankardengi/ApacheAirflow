@@ -1,3 +1,4 @@
+from airflow.utils.dates import days_ago
 from airflow import DAG
 from airflow.operators.bash import BashOperator
 from airflow.operators.dummy import DummyOperator
@@ -11,8 +12,8 @@ args = {'owner':'shankar'}
 dag = DAG(
     dag_id = 'example_bash_operator',
     default_args= args,
-    schedule_interval= daily,
-    start_date= today,
+    schedule_interval='0 0 * * *',
+    start_date= days_ago(2),
     tags = ['example','eaxample2']
     )
 
